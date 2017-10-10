@@ -1,3 +1,46 @@
-body{
-	background-color: #000044;
+img{
+	max-width: 100%;
+}
+
+/* card is the grandarent and needs perspective */
+/* this doesn't make card 3d, it makes it 3d for everyone else */
+.card{
+	perspective: 800px;
+	border: 2px solid black;
+	height: 300px;
+	
+}
+
+/* car-holder is the child, it is the thing that will flip */
+/* card-holder has 2 children, fornt and back, they do not flip, card holder does */
+.card-holder{
+	position: relative;
+	transform-style: preserve-3d; /* the grandhcildren need to know they are 3d */
+	transition: all 1s;
+	cursor: pointer;
+}
+
+.card-front, .card-back{
+	position: absolute;
+	top: 0;
+	left: 0;
+	backface-visibility: hidden; /* so when its upside down you cant see it */
+}
+
+.card-front{
+	transform: rotateY(180deg);
+}
+
+.card-back{
+	background: url('images/logo-bw.png') no-repeat 50% 50%; /* 50% puts it in the middle */
+	height: 300px;
+	width: 100%;
+}
+
+.flip{
+	transform: rotateY(-180deg);
+}
+
+.matched{
+	transform: rotateY(520deg);
 }
